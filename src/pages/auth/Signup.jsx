@@ -1,6 +1,138 @@
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+const generateCode = () => {
+  return Math.floor(10000 + Math.random() * 90000).toString();
+};
 
 const Signup = () => {
+  const navigate = useNavigate();
+  const [showVerification, setShowVerification] = useState(false);
+  const [verificationCode, setVerificationCode] = useState("");
+  const [inputCode, setInputCode] = useState(["", "", "", "", ""]);
+  const [timeLeft, setTimeLeft] = useState(30);
+  const [resendAvailable, setResendAvailable] = useState(false);
+
+  const handleSignupSubmit = (e) => {
+    e.preventDefault();
+    const code = generateCode();
+    localStorage.setItem("verificationCode", code);
+    setVerificationCode(code);
+    setShowVerification(true);
+    setTimeLeft(30);
+    setResendAvailable(false);
+  };
+
+  useEffect(() => {
+    let timer;
+    if (!resendAvailable && showVerification) {
+      timer = setInterval(() => {
+        setTimeLeft((prev) => {
+          if (prev <= 1) {
+            clearInterval(timer);
+            setResendAvailable(true);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    }
+    return () => clearInterval(timer);
+  }, [resendAvailable, showVerification]);
+
+  const handleResend = () => {
+    const code = generateCode();
+    localStorage.setItem("verificationCode", code);
+    console.log("Resent Code:", code);
+    setVerificationCode(code);
+    setInputCode(["", "", "", "", ""]);
+    setTimeLeft(30);
+    setResendAvailable(false);
+  };
+
+  const handleInputChange = (e, index) => {
+    const value = e.target.value;
+    if (!/^[0-9]?$/.test(value)) return;
+
+    const newCode = [...inputCode];
+    newCode[index] = value;
+    setInputCode(newCode);
+
+    // Auto-focus next input
+    if (value && index < 4) {
+      document.getElementById(`code-${index + 1}`).focus();
+    }
+  };
+
+  const handleVerify = () => {
+    const entered = inputCode.join("");
+    const stored = localStorage.getItem("verificationCode");
+    if (entered === stored) {
+      alert("Verification successful!");
+      localStorage.setItem("user", JSON.stringify(stored));
+      window.location.href = "/";
+    } else {
+      alert("Invalid code. Try again.");
+    }
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      localStorage.removeItem("verificationCode");
+    }, 30000);
+  }, [verificationCode]);
+
+  if (showVerification) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="w-full max-w-sm bg-white rounded-md p-6 text-center space-y-6">
+          <div>
+            <h2 className="text-xl md:text-2xl font-semibold text-green-600">
+              Enter Verification Code
+            </h2>
+            <p className="text-sm text-gray-600 text-center mb-4">
+              A 5-digit code was sent to your phone. And your code is
+              <strong> {verificationCode}</strong>
+            </p>
+          </div>
+          <div className="flex justify-center gap-2 mb-4">
+            {inputCode.map((digit, index) => (
+              <input
+                key={index}
+                id={`code-${index}`}
+                type="text"
+                maxLength={1}
+                value={digit}
+                onChange={(e) => handleInputChange(e, index)}
+                className="w-10 h-10 md:w-14 md:h-14 text-center border border-gray-300 rounded focus:outline-none focus:border-green-500"
+              />
+            ))}
+          </div>
+
+          <div className="my-10 text-sm text-gray-600">
+            {resendAvailable ? (
+              <button
+                onClick={handleResend}
+                className="text-green-600 hover:underline"
+              >
+                Resend Code
+              </button>
+            ) : (
+              <p>Resend code in {timeLeft} seconds</p>
+            )}
+          </div>
+
+          <button
+            onClick={handleVerify}
+            className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition"
+          >
+            Verify
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="w-full h-full py-6 px-4 md:px-0 flex flex-col items-center gap-8">
@@ -16,7 +148,7 @@ const Signup = () => {
             </h2>
           </div>
 
-          <form className="space-y-4">
+          <form onSubmit={handleSignupSubmit} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700">
