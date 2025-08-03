@@ -36,7 +36,11 @@ const Header = () => {
         }`}
       >
         <Link to="/">
-          <img src="/assets/logo-1.png" alt="logo" className="w-28 md:w-32" />
+          <img
+            src="/assets/logo-1.png"
+            alt="logo"
+            className="w-28 md:w-32 lg:w-40"
+          />
         </Link>
 
         <ul className="hidden md:flex items-center gap-6">
