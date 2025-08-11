@@ -47,7 +47,7 @@ function App() {
 
   return (
     <>
-      <MainLayout authentication={authentication} />
+      <MainLayout authentication={authentication} onLogout={onLogout} />
     </>
   );
 }
