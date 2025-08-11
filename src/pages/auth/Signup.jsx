@@ -142,8 +142,8 @@ const Signup = () => {
               alt="logo.png"
               className="w-28 md:w-36 lg:w-48 mx-auto"
             />
-            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-green-600">
-              Create Your Ek-Pass Account
+            <h2 className="text-lg sm:text-xl font-bold text-green-600">
+              Create Your EkPass Account
             </h2>
           </div>
 
@@ -186,22 +186,6 @@ const Signup = () => {
                 </option>
                 <option value="individual">Individual</option>
                 <option value="company">Company</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Payment Mode
-              </label>
-              <select
-                className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-green-500"
-                required
-              >
-                <option value="" disabled selected>
-                  Select Payment Mode
-                </option>
-                <option value="wallet">Wallet</option>
-                <option value="autodebit">Auto Debit</option>
               </select>
             </div>
 
@@ -250,7 +234,7 @@ const Signup = () => {
           <img
             src="/assets/authorities.png"
             alt="authorities"
-            className="w-40 sm:w-52 md:w-72 lg:w-80"
+            className="w-48"
           />
         </div>
       </div>

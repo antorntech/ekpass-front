@@ -30,8 +30,8 @@ const Login = () => {
             alt="logo.png"
             className="w-28 md:w-36 lg:w-48 mx-auto"
           />
-          <h2 className="text-xl md:text-2xl font-bold text-green-600 mt-3">
-            Login to Ek-Pass
+          <h2 className="text-xl font-bold text-green-600 mt-3">
+            Login to EkPass
           </h2>
         </div>
 
@@ -80,13 +80,8 @@ const Login = () => {
         </p>
       </div>
 
-      {/* Authorities Logos */}
-      <div className="w-full max-w-sm">
-        <img
-          src="/assets/authorities.png"
-          alt="authorities"
-          className="w-full object-contain"
-        />
+      <div className="w-full flex items-center justify-center">
+        <img src="/assets/authorities.png" alt="authorities" className="w-48" />
       </div>
     </div>
   );
