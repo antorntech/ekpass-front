@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const generateCode = () => {
   return Math.floor(10000 + Math.random() * 90000).toString();
 };
 
 const Signup = () => {
-  const navigate = useNavigate();
   const [showVerification, setShowVerification] = useState(false);
   const [verificationCode, setVerificationCode] = useState("");
   const [inputCode, setInputCode] = useState(["", "", "", "", ""]);
