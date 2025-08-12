@@ -254,13 +254,13 @@ const UserDashboard = () => {
       <div className="bg-white p-6 rounded-xl shadow">
         <h2 className="text-lg font-semibold mb-4">Quick Actions</h2>
         <div className="flex flex-wrap gap-4">
-          <button className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">
+          <button className="flex items-center cursor-pointer gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">
             <FontAwesomeIcon icon={faPlus} /> Add Vehicle
           </button>
-          <button className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
-            <FontAwesomeIcon icon={faCreditCard} /> Pay Toll
+          <button className="flex items-center cursor-pointer gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+            <FontAwesomeIcon icon={faCreditCard} /> Top Up
           </button>
-          <button className="flex items-center gap-2 bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition">
+          <button className="flex items-center cursor-pointer gap-2 bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition">
             <FontAwesomeIcon icon={faHistory} /> View Pass History
           </button>
         </div>

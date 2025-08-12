@@ -25,7 +25,7 @@ const Header = ({ onMenuClick, onLogout }) => {
       {/* Right side: Balance + Logout */}
       <div className="flex items-center gap-4">
         {/* Balance */}
-        <div className="flex items-center gap-1 bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium shadow-sm">
+        <div className="flex items-center gap-1 bg-green-100 text-green-700 px-3 py-2 rounded-full text-sm font-medium shadow-sm">
           {/* <FontAwesomeIcon icon={faWallet} /> */}
           Balance:
           <div>
