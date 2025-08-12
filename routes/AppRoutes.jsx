@@ -8,6 +8,7 @@ import Payment from "../src/pages/dashboard/payment/Payment";
 import AddVehicle from "../src/pages/dashboard/vehicle/AddVehicle";
 import EditVehicle from "../src/pages/dashboard/vehicle/EditVehicle";
 import AddMultVehicle from "../src/pages/dashboard/vehicle/AddMultVehicle";
+import Landing from "../src/pages/landing/Landing";
 
 const AppRoutes = ({ authentication }) => {
   return (
@@ -23,7 +24,9 @@ const AppRoutes = ({ authentication }) => {
         </Routes>
       ) : (
         <Routes>
-          <Route exact path="/" element={<Signup />} />
+          <Route path="*" element={<Landing />} />
+          <Route exact path="/" element={<Landing />} />
+          <Route path="/landing" element={<Landing />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
         </Routes>
