@@ -8,7 +8,7 @@ const LandingHeader = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const myMenus = [
-    { name: "Home", path: "/" },
+    { name: "Quick Action", path: "/quick-action" },
     { name: "How it Works", path: "/how-it-works" },
     { name: "Toll Rate", path: "/toll-rate" },
     { name: "Support", path: "/support" },

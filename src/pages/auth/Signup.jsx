@@ -136,7 +136,7 @@ const Signup = () => {
     <div className="min-h-screen flex items-center justify-center">
       <div className="w-full h-full py-6 px-4 md:px-0 flex flex-col items-center gap-8">
         <div className="w-full max-w-2xl border border-gray-200 rounded-md p-4 sm:p-6 md:p-8 bg-white shadow-sm">
-          <div className="flex flex-col items-center mb-6 text-center">
+          <div className="flex flex-col items-center mb-2 md:mb-4 text-center">
             <img
               src="/assets/logo-1.png"
               alt="logo.png"

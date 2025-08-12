@@ -24,7 +24,7 @@ const Login = () => {
   return (
     <div className="w-full min-h-screen flex flex-col items-center justify-center gap-10 px-4 py-10">
       <div className="w-full max-w-md bg-white p-6 md:p-8 rounded-lg shadow-sm border border-gray-200">
-        <div className="text-center mb-6">
+        <div className="text-center mb-2 md:mb-4">
           <img
             src="/assets/logo-1.png"
             alt="logo.png"
