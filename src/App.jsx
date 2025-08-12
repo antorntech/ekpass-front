@@ -27,8 +27,14 @@ const MainLayout = ({ authentication, onLogout }) => {
         <Header onMenuClick={() => setSidebarOpen(true)} onLogout={onLogout} />
 
         {/* Scrollable content */}
-        <main className="flex-1 overflow-auto bg-gray-50 mt-14">
+        {/* <main className="flex-1 overflow-auto bg-gray-50 mt-14">
           <div className="p-5">
+            <AppRoutes authentication={authentication} />
+          </div>
+        </main> */}
+        <main className="flex-1 overflow-auto bg-gray-50 mt-14">
+          <div className="p-5 overflow-x-auto">
+            {/* এখানে extra overflow-x-auto */}
             <AppRoutes authentication={authentication} />
           </div>
         </main>
@@ -43,6 +49,7 @@ function App() {
   const onLogout = () => {
     localStorage.removeItem("user");
     window.location.reload();
+    window.location.href = "/";
   };
 
   return (
