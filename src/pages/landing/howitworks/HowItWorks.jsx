@@ -40,7 +40,7 @@ const steps = [
 
 const HowItWorks = () => {
   return (
-    <div className="container mx-auto px-6 py-12">
+    <div id="how-it-works" className="container mx-auto px-6 py-12">
       {/* Header */}
       <div className="text-center mb-10">
         <h1 className="text-2xl md:text-4xl font-bold text-gray-800">

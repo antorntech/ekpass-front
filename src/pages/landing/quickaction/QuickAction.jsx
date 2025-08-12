@@ -28,7 +28,7 @@ const QuickAction = () => {
   ];
 
   return (
-    <div className="container mx-auto px-6 py-12">
+    <div id="quick-action" className="container mx-auto px-6 py-12">
       <div className="text-center mb-10">
         <h1 className="text-2xl md:text-4xl font-bold text-gray-800 mb-2 md:mb-4">
           Quick Action
