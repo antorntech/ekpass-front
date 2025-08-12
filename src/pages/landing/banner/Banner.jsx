@@ -9,7 +9,7 @@ const Banner = () => {
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
         {/* Left Content */}
         <div className="flex-1 text-center md:text-left">
-          <h1 className="text-2xl md:text-5xl font-bold text-gray-800 leading-tight">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 leading-tight">
             Fast, Paperless <span className="text-green-600">Toll Payment</span>
           </h1>
           <p className="mt-4 text-md md:text-lg text-gray-600">
