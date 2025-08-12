@@ -5,6 +5,7 @@ import Support from "./support/Support";
 import TollRate from "./tollrate/TollRate";
 import QuickAction from "./quickaction/QuickAction";
 import HowItWorks from "./howitworks/HowItWorks";
+import Footer from "../../shared/Footer";
 
 function Landing() {
   return (
@@ -16,6 +17,7 @@ function Landing() {
         <HowItWorks />
         <TollRate />
         <Support />
+        <Footer />
       </div>
     </div>
   );
