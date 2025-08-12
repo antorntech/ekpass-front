@@ -22,6 +22,7 @@ import {
   Legend,
 } from "chart.js";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 ChartJS.register(
   CategoryScale,
@@ -254,9 +255,12 @@ const UserDashboard = () => {
       <div className="bg-white p-6 rounded-xl shadow">
         <h2 className="text-lg font-semibold mb-4">Quick Actions</h2>
         <div className="flex flex-wrap gap-4">
-          <button className="flex items-center cursor-pointer gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">
+          <Link
+            to="/vehicle/add"
+            className="flex items-center cursor-pointer gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition"
+          >
             <FontAwesomeIcon icon={faPlus} /> Add Vehicle
-          </button>
+          </Link>
           <button className="flex items-center cursor-pointer gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
             <FontAwesomeIcon icon={faCreditCard} /> Top Up
           </button>

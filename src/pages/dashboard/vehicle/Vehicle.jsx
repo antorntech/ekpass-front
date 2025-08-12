@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faDownload,
   faEye,
   faPen,
   faPlus,
@@ -10,16 +11,29 @@ import { Link } from "react-router-dom";
 
 const Vehicle = () => {
   const [vehicles, setVehicles] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("vehicles")) || [];
     setVehicles(data);
   }, []);
 
-  const handleDelete = (id) => {
-    const updated = vehicles.filter((v) => v.id !== id);
+  const confirmDelete = (id) => {
+    setDeleteId(id);
+    setShowModal(true);
+  };
+
+  const handleDelete = () => {
+    const updated = vehicles.filter((v) => v.id !== deleteId);
     localStorage.setItem("vehicles", JSON.stringify(updated));
     setVehicles(updated);
+    setShowModal(false);
+    setDeleteId(null);
+  };
+
+  const handleDownloadLog = () => {
+    alert("Log history downloading... (implement download logic here)");
   };
 
   return (
@@ -80,7 +94,7 @@ const Vehicle = () => {
                       <FontAwesomeIcon icon={faPen} className="text-sm" />
                     </Link>
                     <button
-                      onClick={() => handleDelete(v.id)}
+                      onClick={() => confirmDelete(v.id)}
                       className="bg-gray-300 cursor-pointer flex items-center justify-center rounded p-2 text-white hover:bg-red-700"
                     >
                       <FontAwesomeIcon icon={faTrash} className="text-sm" />
@@ -98,6 +112,47 @@ const Vehicle = () => {
           </tbody>
         </table>
       </div>
+
+      {/* Delete Confirmation Modal */}
+      {showModal && (
+        <div className="fixed inset-0 bg-white/30 backdrop-blur-sm bg-opacity-40 flex justify-center items-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-[400px]">
+            <h2 className="text-lg font-bold text-red-600 mb-2">
+              ⚠ Delete Vehicle
+            </h2>
+            <p className="text-gray-700 text-sm mb-4">
+              Are you sure you want to delete this vehicle? This action cannot
+              be undone.
+            </p>
+            <div className="bg-gray-100 p-4 rounded-md mb-4 text-orange-400">
+              If you want to download the log history, click the button below.
+            </div>
+            <div className="flex justify-between gap-2">
+              <button
+                onClick={handleDownloadLog}
+                className="cursor-pointer bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 text-sm"
+              >
+                <FontAwesomeIcon icon={faDownload} />
+                Log History
+              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="cursor-pointer bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500 text-sm"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleDelete}
+                  className="cursor-pointer bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 text-sm"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
