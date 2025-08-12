@@ -11,7 +11,7 @@ const Banner = () => {
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
         {/* Left Content */}
         <div className="flex-1 text-center md:text-left">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 leading-tight">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 leading-[1.5]">
             <Trans
               i18nKey="banner.title"
               components={{ green: <span className="text-green-600" /> }}

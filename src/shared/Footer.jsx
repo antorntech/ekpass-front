@@ -6,9 +6,6 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         {/* Top Section */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          {/* Logo */}
-          <img src="/assets/logo-1.png" alt="logo" className="w-32" />
-
           {/* Links */}
           <div className="flex space-x-6 text-sm">
             <a href="/privacy-policy" className="hover:text-green-500">
@@ -17,6 +14,11 @@ const Footer = () => {
             <a href="/terms-and-conditions" className="hover:text-green-500">
               Terms & Conditions
             </a>
+          </div>
+          <div className="flex items-end gap-1">
+            <p>Technical Support:</p>
+            {/* Logo */}
+            <img src="/assets/np-logo-set.png" alt="logo" className="w-56" />
           </div>
         </div>
 
