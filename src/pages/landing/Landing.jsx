@@ -13,8 +13,8 @@ function Landing() {
       <LandingHeader />
       <div className="mt-12">
         <Banner />
-        <QuickAction />
         <HowItWorks />
+        <QuickAction />
         <TollRate />
         <Support />
         <Footer />
