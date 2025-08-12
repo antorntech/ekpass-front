@@ -18,8 +18,8 @@ const Support = () => {
     {
       icon: faPhone,
       title: "Call Us",
-      value: "+880 1700 000 000",
-      link: "tel:+8801700000000",
+      value: "333",
+      link: "333",
       color: "bg-green-500",
     },
     {

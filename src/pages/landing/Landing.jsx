@@ -11,7 +11,7 @@ function Landing() {
   return (
     <div>
       <LandingHeader />
-      <div className="mt-12 md:mt-0">
+      <div className="mt-12">
         <Banner />
         <QuickAction />
         <HowItWorks />
