@@ -25,7 +25,7 @@ const LandingHeader = () => {
 
   return (
     <header className="bg-white shadow-sm fixed top-0 left-0 w-full z-50">
-      <div className="max-w-5xl mx-auto px-6 py-2 flex justify-between items-center">
+      <div className="container mx-auto px-6 py-2 flex justify-between items-center">
         {/* Logo */}
         <div className="text-2xl font-bold text-green-600 cursor-pointer">
           <img
