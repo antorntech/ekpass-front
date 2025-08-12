@@ -1,0 +1,15 @@
+{
+  "banner": {
+    "title": "Fast, Cashless <green>Toll Payment</green>",
+    "description": "Experience a hassle-free toll payment system with real-time vehicle verification and seamless transactions.",
+    "button": "Get Started"
+  },
+  "landingheader": {
+    "language": "Language",
+    "quick_action": "Quick Action",
+    "how_it_works": "How it Works",
+    "toll_rate": "Toll Rate",
+    "support": "Support",
+    "login_signup": "Login / Signup"
+  }
+}

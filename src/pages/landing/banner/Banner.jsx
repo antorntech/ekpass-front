@@ -1,7 +1,9 @@
 import React from "react";
+import { useTranslation, Trans } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 const Banner = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   return (
@@ -10,17 +12,21 @@ const Banner = () => {
         {/* Left Content */}
         <div className="flex-1 text-center md:text-left">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 leading-tight">
-            Fast, Paperless <span className="text-green-600">Toll Payment</span>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 leading-tight">
+              <Trans
+                i18nKey="banner.title"
+                components={{ green: <span className="text-green-600" /> }}
+              />
+            </h1>
           </h1>
           <p className="mt-4 text-md md:text-lg text-gray-600">
-            Experience a hassle-free toll payment system with real-time vehicle
-            verification and seamless transactions.
+            {t("banner.description")}
           </p>
           <button
             onClick={() => navigate("/login")}
             className="mt-6 cursor-pointer bg-green-600 text-white px-4 py-2 rounded-md text-md md:text-lg hover:bg-green-700 transition"
           >
-            Get Started
+            {t("banner.button")}
           </button>
         </div>
 

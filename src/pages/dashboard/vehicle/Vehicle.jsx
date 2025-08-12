@@ -89,19 +89,19 @@ const Vehicle = () => {
                     <td className="p-3 whitespace-nowrap">{v.chassisNumber}</td>
                     <td className="p-3 whitespace-nowrap">{v.vehicleName}</td>
                     <td className="p-3 flex gap-2 whitespace-nowrap">
-                      <button className="bg-gray-400 flex items-center justify-center rounded p-2 text-white hover:bg-blue-600 transition">
+                      <button className="cursor-pointer bg-gray-400 flex items-center justify-center rounded p-2 text-white hover:bg-blue-600 transition">
                         <FontAwesomeIcon icon={faEye} className="text-sm" />
                       </button>
                       <Link
                         to={`/vehicle/edit/${v.id}`}
-                        className="bg-gray-400 flex items-center justify-center rounded p-2 text-white hover:bg-green-600 transition"
+                        className="cursor-pointer bg-gray-400 flex items-center justify-center rounded p-2 text-white hover:bg-green-600 transition"
                         title="You can only edit vehicle name"
                       >
                         <FontAwesomeIcon icon={faPen} className="text-sm" />
                       </Link>
                       <button
                         onClick={() => confirmDelete(v.id)}
-                        className="bg-gray-400 flex items-center justify-center rounded p-2 text-white hover:bg-red-600 transition"
+                        className="cursor-pointer bg-gray-400 flex items-center justify-center rounded p-2 text-white hover:bg-red-600 transition"
                       >
                         <FontAwesomeIcon icon={faTrash} className="text-sm" />
                       </button>
@@ -185,7 +185,7 @@ const Vehicle = () => {
             <div className="flex flex-col sm:flex-row sm:justify-between gap-3">
               <button
                 onClick={handleDownloadLog}
-                className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 text-sm flex items-center justify-center gap-1"
+                className="cursor-pointer bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 text-sm flex items-center justify-center gap-1"
               >
                 <FontAwesomeIcon icon={faDownload} />
                 Log History
@@ -193,13 +193,13 @@ const Vehicle = () => {
               <div className="flex gap-2 justify-end">
                 <button
                   onClick={() => setShowModal(false)}
-                  className="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500 text-sm"
+                  className="cursor-pointer bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500 text-sm"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={handleDelete}
-                  className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 text-sm"
+                  className="cursor-pointer bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 text-sm"
                 >
                   Delete
                 </button>
