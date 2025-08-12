@@ -5,7 +5,7 @@ const Banner = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="md:min-h-screen flex items-center py-6">
+    <section className="md:min-h-screen flex items-center py-12 md:py-6">
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
         {/* Left Content */}
         <div className="flex-1 text-center md:text-left">
