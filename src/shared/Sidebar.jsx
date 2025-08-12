@@ -49,7 +49,7 @@ const Sidebar = ({ isOpen, onClose }) => {
             <Link
               key={item.path}
               to={item.path}
-              className={`flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-slate-600 hover:text-white transition
+              className={`flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-slate-400 hover:text-white transition
                 ${
                   location.pathname === item.path
                     ? "bg-slate-600 text-white"
