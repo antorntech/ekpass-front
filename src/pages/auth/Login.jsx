@@ -130,7 +130,7 @@ export default function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
     localStorage.setItem("user", JSON.stringify(initialValues));
-    navigate("/");
+    window.location.href = "/";
   };
 
   // MFS login step 1
@@ -154,8 +154,11 @@ export default function Login() {
         title: "Successfully Verified",
         text: `Welcome! Your ${selectedMfs} account is verified.`,
       });
+
+      localStorage.removeItem("mfsVerifyCode");
+      localStorage.setItem("user", JSON.stringify(initialValues));
       setTimeout(() => {
-        navigate("/"); // auto redirect
+        window.location.href = "/"; // auto redirect
       }, 2000);
     } else {
       setMessage("❌ Invalid verification code.");
@@ -221,7 +224,7 @@ export default function Login() {
         {/* Step 1: Select MFS */}
         {step === 1 && (
           <>
-            <div className="space-y-3 flex flex-col md:flex-row items-center gap-4">
+            <div className="space-y-3 flex flex-row items-center gap-4">
               {mfsList.map((mfs) => (
                 <div
                   key={mfs.name}
@@ -232,13 +235,12 @@ export default function Login() {
                   }`}
                   onClick={() => setSelectedMfs(mfs.name)}
                 >
-                  <div className="w-full flex flex-col items-center gap-3 h-12">
+                  <div className="w-full">
                     <img
                       src={mfs.logo}
                       alt={mfs.name}
-                      className="w-full object-contain"
+                      className="w-14 h-8 object-contain"
                     />
-                    <p>{mfs.name}</p>
                   </div>
                   {selectedMfs === mfs.name && (
                     <FontAwesomeIcon
@@ -257,7 +259,7 @@ export default function Login() {
                   placeholder="Enter Mobile Number"
                   value={mobile}
                   onChange={(e) => setMobile(e.target.value)}
-                  className="w-full border p-2 rounded"
+                  className="w-full border border-gray-300 focus:outline-none focus:border-green-500 p-2 rounded"
                 />
                 {message && (
                   <p className="text-red-500 text-sm mt-1">{message}</p>
