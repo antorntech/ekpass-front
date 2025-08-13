@@ -5,6 +5,9 @@ import {
   faCar,
   faCreditCard,
   faTimes,
+  faUser,
+  faBell,
+  faQuestionCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = ({ isOpen, onClose }) => {
@@ -14,6 +17,9 @@ const Sidebar = ({ isOpen, onClose }) => {
     { name: "Dashboard", path: "/", icon: faTachometerAlt },
     { name: "Vehicle", path: "/vehicle", icon: faCar },
     { name: "Payment", path: "/payment", icon: faCreditCard },
+    { name: "Profile", path: "/profile", icon: faUser },
+    { name: "Notification", path: "/notification", icon: faBell },
+    { name: "Support", path: "/support", icon: faQuestionCircle },
   ];
 
   return (
@@ -44,7 +50,7 @@ const Sidebar = ({ isOpen, onClose }) => {
         </div>
 
         {/* Nav items */}
-        <nav className="mt-4">
+        <nav className="">
           {navItems.map((item) => (
             <Link
               key={item.path}

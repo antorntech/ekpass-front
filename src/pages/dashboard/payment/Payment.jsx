@@ -69,10 +69,29 @@ export default function Payment() {
             </div>
 
             {accounts[mfs.name] ? (
-              <FontAwesomeIcon
-                icon={faCheckCircle}
-                className="text-green-500 text-xl"
-              />
+              <div className="flex items-center gap-3">
+                <FontAwesomeIcon
+                  icon={faCheckCircle}
+                  className="text-green-500 text-xl"
+                />
+                <button
+                  className="cursor-pointer bg-red-600 text-white px-3 py-1 rounded-md text-sm hover:bg-red-700 flex items-center gap-1"
+                  onClick={() => {
+                    setAccounts((prevAccounts) => {
+                      const updatedAccounts = { ...prevAccounts };
+                      delete updatedAccounts[mfs.name];
+                      return updatedAccounts;
+                    });
+                    setModal({
+                      type: "success",
+                      title: "Successfully Removed",
+                      text: `Your ${mfs.name} account has been removed successfully.`,
+                    });
+                  }}
+                >
+                  Remove
+                </button>
+              </div>
             ) : (
               <button
                 onClick={() => {

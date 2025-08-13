@@ -9,6 +9,9 @@ import AddVehicle from "../src/pages/dashboard/vehicle/AddVehicle";
 import EditVehicle from "../src/pages/dashboard/vehicle/EditVehicle";
 import AddMultVehicle from "../src/pages/dashboard/vehicle/AddMultVehicle";
 import Landing from "../src/pages/landing/Landing";
+import Profile from "../src/pages/dashboard/profile/Profile";
+import Notification from "../src/pages/dashboard/notification/Notification";
+import Support from "../src/pages/dashboard/support/Support";
 
 const AppRoutes = ({ authentication }) => {
   return (
@@ -21,6 +24,9 @@ const AppRoutes = ({ authentication }) => {
           <Route path="/vehicle/add" element={<AddVehicle />} />
           <Route path="/vehicle/add/csv" element={<AddMultVehicle />} />
           <Route path="/vehicle/edit/:id" element={<EditVehicle />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/notification" element={<Notification />} />
+          <Route path="/support" element={<Support />} />
         </Routes>
       ) : (
         <Routes>
