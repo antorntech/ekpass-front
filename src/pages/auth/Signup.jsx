@@ -232,9 +232,9 @@ const Signup = () => {
 
         <div>
           <img
-            src="/assets/authorities.png"
+            src="/assets/np-logo-set.png"
             alt="authorities"
-            className="w-48"
+            className="w-52"
           />
         </div>
       </div>

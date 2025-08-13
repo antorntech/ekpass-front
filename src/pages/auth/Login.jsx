@@ -81,7 +81,7 @@ const Login = () => {
       </div>
 
       <div className="w-full flex items-center justify-center">
-        <img src="/assets/authorities.png" alt="authorities" className="w-48" />
+        <img src="/assets/np-logo-set.png" alt="authorities" className="w-52" />
       </div>
     </div>
   );
