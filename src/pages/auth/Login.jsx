@@ -224,11 +224,11 @@ export default function Login() {
         {/* Step 1: Select MFS */}
         {step === 1 && (
           <>
-            <div className="space-y-3 flex flex-row items-center gap-4">
+            <div className="w-full flex flex-row items-center gap-4">
               {mfsList.map((mfs) => (
                 <div
                   key={mfs.name}
-                  className={`flex items-center justify-between border p-2 rounded cursor-pointer ${
+                  className={`w-full flex items-center justify-between border p-2 rounded cursor-pointer ${
                     selectedMfs === mfs.name
                       ? "border-green-500"
                       : "border-gray-200"

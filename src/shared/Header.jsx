@@ -7,7 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Header = ({ onMenuClick, onLogout }) => {
-  const balance = 2500;
+  const balance = localStorage.getItem("balance");
   return (
     <header className="bg-white flex items-center justify-between p-4 shadow-sm fixed -top-0.5 left-0 right-0 z-40 lg:ml-64">
       {/* Sidebar Toggle Button */}
