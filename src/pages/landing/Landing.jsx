@@ -14,7 +14,7 @@ function Landing() {
       <div className="mt-12">
         <Banner />
         <HowItWorks />
-        <QuickAction />
+        {/* <QuickAction /> */}
         <TollRate />
         <Support />
         <Footer />

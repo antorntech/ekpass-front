@@ -23,7 +23,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-700 mt-4 pt-4 text-center text-sm">
+        <div className="border-t border-gray-300 mt-4 pt-4 text-center text-sm">
           © {new Date().getFullYear()} EKPASS. All rights reserved.
         </div>
       </div>

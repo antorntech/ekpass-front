@@ -13,7 +13,7 @@ const LandingHeader = () => {
 
   const myMenus = [
     { name: t("landingheader.how_it_works"), path: "how-it-works" },
-    { name: t("landingheader.quick_action"), path: "quick-action" },
+    // { name: t("landingheader.quick_action"), path: "quick-action" },
     { name: t("landingheader.toll_rate"), path: "toll-rate" },
     { name: t("landingheader.support"), path: "support" },
   ];
