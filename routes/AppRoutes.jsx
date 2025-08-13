@@ -4,7 +4,6 @@ import Login from "../src/pages/auth/Login";
 import Signup from "../src/pages/auth/Signup";
 import Home from "../src/pages/Home";
 import Vehicle from "../src/pages/dashboard/vehicle/Vehicle";
-import Payment from "../src/pages/dashboard/payment/Payment";
 import AddVehicle from "../src/pages/dashboard/vehicle/AddVehicle";
 import EditVehicle from "../src/pages/dashboard/vehicle/EditVehicle";
 import AddMultVehicle from "../src/pages/dashboard/vehicle/AddMultVehicle";
@@ -12,6 +11,7 @@ import Landing from "../src/pages/landing/Landing";
 import Profile from "../src/pages/dashboard/profile/Profile";
 import Notification from "../src/pages/dashboard/notification/Notification";
 import Support from "../src/pages/dashboard/support/Support";
+import TollRecharge from "../src/pages/dashboard/tollrecharge/TollRecharge";
 
 const AppRoutes = ({ authentication }) => {
   return (
@@ -20,7 +20,7 @@ const AppRoutes = ({ authentication }) => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/vehicle" element={<Vehicle />} />
-          <Route path="/payment" element={<Payment />} />
+          <Route path="/toll-recharge" element={<TollRecharge />} />
           <Route path="/vehicle/add" element={<AddVehicle />} />
           <Route path="/vehicle/add/csv" element={<AddMultVehicle />} />
           <Route path="/vehicle/edit/:id" element={<EditVehicle />} />

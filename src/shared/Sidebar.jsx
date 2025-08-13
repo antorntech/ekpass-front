@@ -16,7 +16,7 @@ const Sidebar = ({ isOpen, onClose }) => {
   const navItems = [
     { name: "Dashboard", path: "/", icon: faTachometerAlt },
     { name: "Vehicle", path: "/vehicle", icon: faCar },
-    { name: "Payment", path: "/payment", icon: faCreditCard },
+    { name: "Toll Recharge", path: "/toll-recharge", icon: faCreditCard },
     { name: "Profile", path: "/profile", icon: faUser },
     { name: "Notification", path: "/notification", icon: faBell },
     { name: "Support", path: "/support", icon: faQuestionCircle },

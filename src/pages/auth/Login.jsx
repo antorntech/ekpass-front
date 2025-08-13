@@ -216,6 +216,13 @@ export default function Login() {
           </button>
         </form>
 
+        <p className="text-sm text-center mt-4 text-gray-600">
+          Don't have an account?{" "}
+          <Link to="/signup" className="text-green-600 hover:underline">
+            Register
+          </Link>
+        </p>
+
         {/* Divider */}
         <div className="my-6 text-center text-gray-500 text-sm">
           or login with MFS
