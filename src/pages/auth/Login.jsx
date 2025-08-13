@@ -210,7 +210,7 @@ export default function Login() {
 
           <button
             type="submit"
-            className="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition"
+            className="cursor-pointer w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition"
           >
             Login
           </button>
@@ -266,7 +266,7 @@ export default function Login() {
                 )}
                 <button
                   onClick={handleCheckRegistration}
-                  className="w-full bg-green-600 text-white py-2 rounded mt-3"
+                  className="cursor-pointer w-full bg-green-600 text-white py-2 rounded mt-3"
                 >
                   Continue
                 </button>
@@ -292,13 +292,13 @@ export default function Login() {
             {message && <p className="text-red-500 text-sm mt-1">{message}</p>}
             <button
               onClick={handleVerifyCode}
-              className="w-full bg-green-600 text-white py-2 rounded mt-3"
+              className="cursor-pointer w-full bg-green-600 text-white py-2 rounded mt-3"
             >
               Verify
             </button>
             <button
               onClick={handleResendCode}
-              className="w-full bg-gray-300 text-black py-2 rounded mt-2"
+              className="cursor-pointer w-full bg-gray-300 text-black py-2 rounded mt-2"
             >
               Resend Code
             </button>
