@@ -1,11 +1,77 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+
+const EkpassIdLogin = ({ onClose }) => {
+  const [ekpassId, setEkpassId] = useState("");
+
+  const handleEkpassLogin = (e) => {
+    e.preventDefault();
+    if (!ekpassId) {
+      alert("Please enter your EKPASS ID");
+      return;
+    }
+    // এখানে API call করে ekpassId verify করতে পারো
+    localStorage.setItem("user", JSON.stringify({ ekpassId }));
+    window.location.href = "/";
+    setEkpassId("");
+  };
+
+  return (
+    <div className="fixed inset-0 flex items-center justify-center bg-white/30 backdrop-blur z-50">
+      <div className="bg-white rounded-lg p-6 w-full max-w-md shadow-lg">
+        <div className="text-center mb-4">
+          <img
+            src="/assets/logo-1.png"
+            alt="logo.png"
+            className="w-28 md:w-36 mx-auto"
+          />
+          <h2 className="text-xl font-bold text-green-600">
+            Login with EKPASS ID
+          </h2>
+        </div>
+        <form onSubmit={handleEkpassLogin} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              EKPASS ID (For MFS / FI Users)
+            </label>
+            <input
+              type="text"
+              value={ekpassId}
+              onChange={(e) => setEkpassId(e.target.value)}
+              placeholder="Enter your EKPASS ID"
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-green-500"
+              required
+            />
+          </div>
+
+          <div className="flex gap-3">
+            <button
+              type="submit"
+              className="flex-1 cursor-pointer bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition"
+            >
+              Login
+            </button>
+            <button
+              type="button"
+              onClick={onClose}
+              className="flex-1 cursor-pointer bg-gray-300 text-gray-700 py-2 rounded-md hover:bg-gray-400 transition"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
 
 const Login = () => {
   const [initialValues, setInitialValues] = React.useState({
     mobile: "",
     password: "",
   });
+
+  const [showEkpassLogin, setShowEkpassLogin] = React.useState(false);
 
   const handleChange = (e) => {
     setInitialValues({
@@ -18,78 +84,189 @@ const Login = () => {
     e.preventDefault();
     localStorage.setItem("user", JSON.stringify(initialValues));
     window.location.href = "/";
-    setInitialValues({ email: "", password: "" });
+    setInitialValues({ mobile: "", password: "" });
   };
 
   return (
-    <div className="w-full min-h-screen flex flex-col items-center justify-center gap-10 px-4 py-10">
-      <div className="w-full max-w-md bg-white p-6 md:p-8 rounded-lg shadow-sm border border-gray-200">
-        <div className="text-center mb-2 md:mb-4">
-          <img
-            src="/assets/logo-1.png"
-            alt="logo.png"
-            className="w-28 md:w-36 lg:w-48 mx-auto"
-          />
-          <h2 className="text-xl font-bold text-green-600 mt-3">
-            Login to EkPass
-          </h2>
+    <>
+      <div className="w-full min-h-screen flex flex-col items-center justify-center gap-10 px-4 py-10">
+        <div className="w-full max-w-md bg-white p-6 md:p-8 rounded-lg shadow-sm border border-gray-200">
+          <div className="text-center mb-2 md:mb-4">
+            <img
+              src="/assets/logo-1.png"
+              alt="logo.png"
+              className="w-28 md:w-36 lg:w-48 mx-auto"
+            />
+            <h2 className="text-xl font-bold text-green-600 mt-3">
+              Login to EkPass
+            </h2>
+          </div>
+
+          {/* Regular Login Form */}
+          <form onSubmit={handleLogin} className="space-y-5">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Mobile
+              </label>
+              <input
+                name="mobile"
+                type="number"
+                onChange={handleChange}
+                value={initialValues.mobile}
+                placeholder="01xxxxxxxxx"
+                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-green-500"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Password
+              </label>
+              <input
+                name="password"
+                type="password"
+                onChange={handleChange}
+                value={initialValues.password}
+                placeholder="********"
+                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-green-500"
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="w-full cursor-pointer bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition"
+            >
+              Login
+            </button>
+          </form>
+
+          {/* Signup Link + EKPASS ID Login */}
+          <p className="text-sm text-center mt-4 text-gray-600">
+            Don't have an account?
+            <Link to="/signup" className="text-green-600 hover:underline ml-1">
+              Signup
+            </Link>{" "}
+            |{" "}
+            <button
+              type="button"
+              onClick={() => setShowEkpassLogin(true)}
+              className="cursor-pointer text-green-600 hover:underline"
+            >
+              Login with EKPASS ID
+            </button>
+          </p>
         </div>
 
-        <form onSubmit={handleLogin} className="space-y-5">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Mobile
-            </label>
-            <input
-              name="mobile"
-              type="number"
-              onChange={handleChange}
-              value={initialValues.mobile}
-              placeholder="01xxxxxxxxx"
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-green-500"
-              required
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Password
-            </label>
-            <input
-              name="password"
-              type="password"
-              onChange={handleChange}
-              value={initialValues.password}
-              placeholder="********"
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-green-500"
-              required
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="w-full cursor-pointer bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition"
-          >
-            Login
-          </button>
-        </form>
-
-        <p className="text-sm text-center mt-4 text-gray-600">
-          Don't have an account?
-          <Link to="/signup" className="text-green-600 hover:underline ml-1">
-            Signup
-          </Link>
-        </p>
+        <div className="w-full flex items-center justify-center">
+          <img
+            src="/assets/np-logo-set.png"
+            alt="authorities"
+            className="w-52"
+          />
+        </div>
       </div>
 
-      <div className="w-full flex items-center justify-center">
-        <img src="/assets/np-logo-set.png" alt="authorities" className="w-52" />
-      </div>
-    </div>
+      {/* Popup Modal for EKPASS ID Login */}
+      {showEkpassLogin && (
+        <EkpassIdLogin onClose={() => setShowEkpassLogin(false)} />
+      )}
+    </>
   );
 };
 
 export default Login;
+
+// const Login = () => {
+//   const [initialValues, setInitialValues] = React.useState({
+//     mobile: "",
+//     password: "",
+//   });
+
+//   const handleChange = (e) => {
+//     setInitialValues({
+//       ...initialValues,
+//       [e.target.name]: e.target.value,
+//     });
+//   };
+
+//   const handleLogin = (e) => {
+//     e.preventDefault();
+//     localStorage.setItem("user", JSON.stringify(initialValues));
+//     window.location.href = "/";
+//     setInitialValues({ email: "", password: "" });
+//   };
+
+//   return (
+//     <div className="w-full min-h-screen flex flex-col items-center justify-center gap-10 px-4 py-10">
+//       <div className="w-full max-w-md bg-white p-6 md:p-8 rounded-lg shadow-sm border border-gray-200">
+//         <div className="text-center mb-2 md:mb-4">
+//           <img
+//             src="/assets/logo-1.png"
+//             alt="logo.png"
+//             className="w-28 md:w-36 lg:w-48 mx-auto"
+//           />
+//           <h2 className="text-xl font-bold text-green-600 mt-3">
+//             Login to EkPass
+//           </h2>
+//         </div>
+
+//         <form onSubmit={handleLogin} className="space-y-5">
+//           <div>
+//             <label className="block text-sm font-medium text-gray-700 mb-1">
+//               Mobile
+//             </label>
+//             <input
+//               name="mobile"
+//               type="number"
+//               onChange={handleChange}
+//               value={initialValues.mobile}
+//               placeholder="01xxxxxxxxx"
+//               className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-green-500"
+//               required
+//             />
+//           </div>
+
+//           <div>
+//             <label className="block text-sm font-medium text-gray-700 mb-1">
+//               Password
+//             </label>
+//             <input
+//               name="password"
+//               type="password"
+//               onChange={handleChange}
+//               value={initialValues.password}
+//               placeholder="********"
+//               className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-green-500"
+//               required
+//             />
+//           </div>
+
+//           <button
+//             type="submit"
+//             className="w-full cursor-pointer bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition"
+//           >
+//             Login
+//           </button>
+//         </form>
+
+//         <p className="text-sm text-center mt-4 text-gray-600">
+//           Don't have an account?
+//           <Link to="/signup" className="text-green-600 hover:underline ml-1">
+//             Signup
+//           </Link>
+//         </p>
+//       </div>
+
+//       <div className="w-full flex items-center justify-center">
+//         <img src="/assets/np-logo-set.png" alt="authorities" className="w-52" />
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Login;
 
 // import React, { useState } from "react";
 // import { Link, useNavigate } from "react-router-dom";
