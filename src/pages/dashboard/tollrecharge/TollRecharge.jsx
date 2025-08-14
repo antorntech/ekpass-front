@@ -58,7 +58,7 @@ const TollRecharge = () => {
           placeholder="Enter amount (BDT)"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
-          className="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-green-500"
+          className="w-full flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-green-500"
         />
         <button
           onClick={handleTopUp}
