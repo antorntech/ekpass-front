@@ -1,5 +1,7 @@
+import { AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import EkpassIdLogin from "./EkpassIdLogin";
 
 const generateCode = () => {
   return Math.floor(10000 + Math.random() * 90000).toString();
@@ -11,6 +13,8 @@ const Signup = () => {
   const [inputCode, setInputCode] = useState(["", "", "", "", ""]);
   const [timeLeft, setTimeLeft] = useState(30);
   const [resendAvailable, setResendAvailable] = useState(false);
+
+  const [showEkpassLogin, setShowEkpassLogin] = useState(false);
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
@@ -228,7 +232,15 @@ const Signup = () => {
             Already have an account?
             <Link to="/login" className="text-green-600 hover:underline ml-1">
               Login
-            </Link>
+            </Link>{" "}
+            |{" "}
+            <button
+              type="button"
+              onClick={() => setShowEkpassLogin(true)}
+              className="cursor-pointer text-green-600 hover:underline"
+            >
+              Login with EKPASS ID
+            </button>
           </p>
         </div>
 
@@ -239,6 +251,13 @@ const Signup = () => {
             className="w-52"
           />
         </div>
+
+        {/* Popup Modal for EKPASS ID Login */}
+        <AnimatePresence>
+          {showEkpassLogin && (
+            <EkpassIdLogin onClose={() => setShowEkpassLogin(false)} />
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
