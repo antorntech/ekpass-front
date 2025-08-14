@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUserPlus,
@@ -7,79 +8,41 @@ import {
   faHeadset,
 } from "@fortawesome/free-solid-svg-icons";
 
-const steps = [
-  {
-    step: 1,
-    title: "User Registration",
-    icon: faUserPlus,
-    color: "bg-blue-500",
-    points: [
-      "Create an account with your phone number & email.",
-      "Verify your identity with national ID/passport.",
-      "Set up a secure password for login.",
-    ],
-  },
-  {
-    step: 2,
-    title: "Vehicle Registration",
-    icon: faCar,
-    color: "bg-green-500",
-    points: [
-      "Add vehicle details (number plate, type, model).",
-      "Upload vehicle ownership documents.",
-      "Link the vehicle to your toll account.",
-    ],
-  },
-  {
-    step: 3,
-    title: "Recharge / Top-up",
-    icon: faWallet,
-    color: "bg-orange-500",
-    points: [
-      "Choose payment method (bKash, Nagad, Card, Bank).",
-      "Recharge minimum required balance.",
-      "Track your balance in real-time from dashboard.",
-    ],
-  },
-  {
-    step: 4,
-    title: "Support",
-    icon: faHeadset,
-    color: "bg-purple-500",
-    points: [
-      "Get 24/7 customer care support.",
-      "Report any issues with toll deduction.",
-      "Receive instant help via chat, call or email.",
-    ],
-  },
+const iconColors = [
+  "bg-blue-500",
+  "bg-green-500",
+  "bg-orange-500",
+  "bg-purple-500",
 ];
+const icons = [faUserPlus, faCar, faWallet, faHeadset];
 
 const HowItWorks = () => {
+  const { t } = useTranslation();
+  const steps = t("howItWorks.steps", { returnObjects: true });
+
   return (
     <div id="how-it-works" className="container mx-auto px-6 py-12">
       {/* Header */}
       <div className="text-center mb-10">
         <h1 className="text-2xl md:text-4xl font-bold text-gray-800">
-          How It Works
+          {t("howItWorks.title")}
         </h1>
-        <p className="text-gray-500 mt-2">
-          Follow these steps to get started with our toll system
-        </p>
+        <p className="text-gray-500 mt-2">{t("howItWorks.subtitle")}</p>
       </div>
 
       {/* Steps Grid */}
       <div className="grid gap-8 grid-cols-1 md:grid-cols-2">
-        {steps.map((s) => (
+        {steps.map((s, index) => (
           <div
-            key={s.step}
+            key={index}
             className="bg-white border border-gray-200 rounded-xl p-6 border-t-4 hover:shadow-lg transition duration-300"
-            style={{ borderTopColor: s.color.replace("bg-", "") }}
+            style={{ borderTopColor: iconColors[index].replace("bg-", "") }}
           >
             {/* Icon */}
             <div
-              className={`${s.color} text-white w-16 h-16 mx-auto flex items-center justify-center rounded-full shadow-lg mb-4`}
+              className={`${iconColors[index]} text-white w-16 h-16 mx-auto flex items-center justify-center rounded-full shadow-lg mb-4`}
             >
-              <FontAwesomeIcon icon={s.icon} className="text-2xl" />
+              <FontAwesomeIcon icon={icons[index]} className="text-2xl" />
             </div>
 
             {/* Title */}

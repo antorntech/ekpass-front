@@ -33,7 +33,7 @@ export const tollRates = [
         ],
       },
       {
-        name: "Bangabandhu (Jamuna) Bridge",
+        name: "Jamuna Bridge",
         toll_rates: [
           { vehicle: "Motorcycle", rate: 50 },
           { vehicle: "Car/Jeep", rate: 100 },
@@ -42,7 +42,7 @@ export const tollRates = [
         ],
       },
       {
-        name: "Bangabandhu Sheikh Mujibur Rahman Tunnel (Karnaphuli)",
+        name: "Karnaphuli Tunnel",
         toll_rates: [
           { vehicle: "Private Car/Pickup", rate: 200 },
           { vehicle: "Microbus", rate: 250 },

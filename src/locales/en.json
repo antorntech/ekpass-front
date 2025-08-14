@@ -11,5 +11,50 @@
     "toll_rate": "Toll Rate",
     "support": "Support",
     "login_signup": "Login / Signup"
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "Follow these steps to get started with our toll system",
+    "steps": [
+      {
+        "title": "User Registration",
+        "points": [
+          "Enter your full name",
+          "Provide a valid phone number",
+          "Select your account type",
+          "Set a secure PIN number",
+          "Confirm your PIN number",
+          "Verify the otp",
+          "Complete the registration process"
+        ]
+      },
+      {
+        "title": "Vehicle Registration",
+        "points": [
+          "Select your zone",
+          "Choose vehicle class",
+          "Enter vehicle registration number",
+          "Provide last 4 digits of chassis number",
+          "Set a name as your vehicle"
+        ]
+      },
+      {
+        "title": "Recharge / Top-up",
+        "points": [
+          "Enter the recharge amount",
+          "Click the recharge/top-up button",
+          "A payment modal will appear — choose your payment method",
+          "Complete the recharge/top-up process"
+        ]
+      },
+      {
+        "title": "Support",
+        "points": [
+          "Contact via email for assistance",
+          "Call 333 (Help Line) for support",
+          "Use live chat for instant help"
+        ]
+      }
+    ]
   }
 }
