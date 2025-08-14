@@ -17,7 +17,7 @@ const EkpassIdLogin = ({ onClose }) => {
 
   return (
     <motion.div
-      className="fixed inset-0 flex items-center justify-center bg-white/30 backdrop-blur z-50"
+      className="fixed inset-0 flex items-center justify-center bg-black/10 backdrop-blur z-50 p-4"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
