@@ -168,7 +168,7 @@ const Signup = () => {
                 </label>
                 <input
                   type="number"
-                  placeholder="+8801xxxxxxxxx"
+                  placeholder="01xxxxxxxxx"
                   className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-green-500"
                   required
                 />
