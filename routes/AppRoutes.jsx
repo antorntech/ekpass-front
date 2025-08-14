@@ -19,6 +19,8 @@ const AppRoutes = ({ authentication }) => {
       {authentication ? (
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Home />} />
+          <Route path="/landing" element={<Landing />} />
           <Route path="/vehicle" element={<Vehicle />} />
           <Route path="/toll-recharge" element={<TollRecharge />} />
           <Route path="/vehicle/add" element={<AddVehicle />} />

@@ -40,7 +40,9 @@ const Sidebar = ({ isOpen, onClose }) => {
       >
         {/* Logo */}
         <div className="flex items-center justify-center p-4 border-b border-gray-200 relative">
-          <img src="/assets/logo-1.png" alt="logo" className="w-32" />
+          <Link to="/landing">
+            <img src="/assets/logo-1.png" alt="logo" className="w-32" />
+          </Link>
           {/* Close button (mobile) */}
           <div className="lg:hidden absolute top-6 right-4">
             <button onClick={onClose} className="flex items-center gap-2">
