@@ -12,17 +12,15 @@ import { motion, AnimatePresence } from "framer-motion";
 const VehicleTable = ({ vehicles }) => {
   const [expanded, setExpanded] = useState(false);
 
-  // শুরুর visible রো
   const visibleVehicles = expanded ? vehicles : vehicles.slice(0, 2);
 
   return (
-    <div className="px-4">
+    <div>
       <div className="mx-auto mt-6 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-black/5">
         <h2 className="text-lg font-semibold text-gray-900 mb-4">
           Your Vehicles
         </h2>
 
-        {/* Table */}
         <div className="overflow-x-auto">
           <table className="min-w-full border border-gray-200 rounded-lg overflow-hidden">
             <thead className="bg-gray-50">
@@ -57,12 +55,11 @@ const VehicleTable = ({ vehicles }) => {
           </table>
         </div>
 
-        {/* Load More Button */}
         {vehicles.length > 2 && (
           <div className="mt-4 flex justify-center">
             <button
               onClick={() => setExpanded(!expanded)}
-              className="px-4 py-2 text-sm rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:opacity-90 transition-all"
+              className="cursor-pointer px-4 py-2 text-sm rounded-lg bg-slate-600 text-white hover:opacity-90 transition-all"
             >
               {expanded ? "Show Less" : "Load More"}
             </button>
@@ -74,17 +71,16 @@ const VehicleTable = ({ vehicles }) => {
 };
 
 export default function Profile() {
-  // ---- Demo data (replace with real user data from your store/API) ----
   const user = {
     name: "John Doe",
     email: "johndoe@gmail.com",
-    avatar: "", // optional profile image URL, leave empty to use icon
+    avatar: "",
     vehicles: [
       { id: "TAG-10021", plate: "DHAKA METRO GA-12-3456" },
       { id: "TAG-10022", plate: "DHAKA METRO BA-09-1122" },
       { id: "TAG-10023", plate: "CHATTOGRAM KA-88-7788" },
     ],
-    totalTollPaid: 12450, // in BDT
+    totalTollPaid: 12450,
   };
 
   const formatBDT = (n) => {
@@ -94,12 +90,9 @@ export default function Profile() {
 
   return (
     <div className="max-w-5xl mx-auto">
-      {/* Profile Card (overlapping) */}
-      <div className="relative px-4">
-        <div className="mx-auto w-full rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5">
-          <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start">
-            {/* Avatar */}
-            {/* <div className="flex-shrink-0">
+      <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start">
+        {/* Avatar */}
+        {/* <div className="flex-shrink-0">
               {user.avatar ? (
                 <img
                   src={user.avatar}
@@ -114,72 +107,64 @@ export default function Profile() {
               )}
             </div> */}
 
-            {/* Identity */}
-            <div className="flex-1 text-center sm:text-left">
-              <h1 className="text-2xl font-bold tracking-tight text-gray-900">
-                {user.name}
-              </h1>
-              <div className="mt-2 flex flex-col items-center gap-2 text-sm text-gray-600 sm:flex-row sm:items-center">
-                <span className="inline-flex items-center gap-2 rounded-lg bg-gray-50 px-3 py-1 shadow-sm">
-                  <FontAwesomeIcon
-                    icon={faEnvelope}
-                    className="text-blue-500"
-                  />
-                  <span>{user.email}</span>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Stats strip */}
-          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {/* Vehicles Count */}
-            <div className="rounded-2xl border border-gray-100 bg-gradient-to-b from-white to-gray-50 p-4 shadow-sm">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-xs uppercase tracking-wide text-gray-500">
-                    Vehicles Registered
-                  </p>
-                  <p className="mt-1 text-3xl font-bold text-gray-800">
-                    {user.vehicles.length}
-                  </p>
-                </div>
-                <div className="rounded-xl bg-blue-50 p-3">
-                  <FontAwesomeIcon
-                    icon={faCar}
-                    className="h-6 w-6 text-blue-600"
-                  />
-                </div>
-              </div>
-              <p className="mt-2 text-xs text-gray-500">Under your account</p>
-            </div>
-
-            {/* Total Toll Paid */}
-            <div className="rounded-2xl border border-gray-100 bg-gradient-to-b from-white to-gray-50 p-4 shadow-sm">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-xs uppercase tracking-wide text-gray-500">
-                    Total Toll Paid
-                  </p>
-                  <p className="mt-1 text-3xl font-bold text-gray-800">
-                    ৳{formatBDT(user.totalTollPaid)}
-                  </p>
-                </div>
-                <div className="rounded-xl bg-emerald-50 p-3">
-                  <FontAwesomeIcon
-                    icon={faMoneyBillWave}
-                    className="h-6 w-6 text-emerald-600"
-                  />
-                </div>
-              </div>
-              <p className="mt-2 text-xs text-gray-500">All-time payments</p>
-            </div>
+        {/* Identity */}
+        <div className="flex-1 text-center sm:text-left">
+          <h1 className="text-2xl font-bold tracking-tight text-gray-900">
+            {user.name}
+          </h1>
+          <div className="mt-2 flex flex-col items-center gap-2 text-sm text-gray-600 sm:flex-row sm:items-center">
+            <span className="inline-flex items-center gap-2 rounded-lg bg-gray-50 px-3 py-1 shadow-sm">
+              <FontAwesomeIcon icon={faEnvelope} className="text-green-500" />
+              <span>{user.email}</span>
+            </span>
           </div>
         </div>
       </div>
+
+      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Vehicles Count */}
+        <div className="rounded-2xl border border-gray-100 bg-gradient-to-b from-white to-gray-50 p-4 shadow-sm">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-xs uppercase tracking-wide text-gray-500">
+                Vehicles Registered
+              </p>
+              <p className="mt-1 text-3xl font-bold text-gray-800">
+                {user.vehicles.length}
+              </p>
+            </div>
+            <div className="rounded-xl bg-green-50 p-3">
+              <FontAwesomeIcon
+                icon={faCar}
+                className="h-6 w-6 text-green-600"
+              />
+            </div>
+          </div>
+          <p className="mt-2 text-xs text-gray-500">Under your account</p>
+        </div>
+
+        {/* Total Toll Paid */}
+        <div className="rounded-2xl border border-gray-100 bg-gradient-to-b from-white to-gray-50 p-4 shadow-sm">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-xs uppercase tracking-wide text-gray-500">
+                Total Toll Paid
+              </p>
+              <p className="mt-1 text-3xl font-bold text-gray-800">
+                ৳{formatBDT(user.totalTollPaid)}
+              </p>
+            </div>
+            <div className="rounded-xl bg-slate-50 p-3">
+              <FontAwesomeIcon
+                icon={faMoneyBillWave}
+                className="h-6 w-6 text-slate-600"
+              />
+            </div>
+          </div>
+          <p className="mt-2 text-xs text-gray-500">All-time payments</p>
+        </div>
+      </div>
       <VehicleTable vehicles={user.vehicles} />
-      {/* Footer spacer */}
-      <div className="h-8" />
     </div>
   );
 }
