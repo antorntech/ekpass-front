@@ -52,7 +52,6 @@ const AddMultVehicle = () => {
       const ws = wb.Sheets[wsname];
       const data = XLSX.utils.sheet_to_json(ws);
 
-      // Format data with clean strings
       const formatted = data.map((row, index) => {
         const vehicle = {
           id: index + 1,
@@ -62,11 +61,7 @@ const AddMultVehicle = () => {
           chassisNumber: row.chassisNumber || "",
           vehicleName: row.vehicleName || "",
         };
-
-        return {
-          ...vehicle,
-          registered: isRegistered(vehicle),
-        };
+        return { ...vehicle, registered: isRegistered(vehicle) };
       });
 
       setVehicles(formatted);
@@ -75,7 +70,7 @@ const AddMultVehicle = () => {
     reader.readAsBinaryString(file);
   };
 
-  // Handle single checkbox
+  // Checkbox toggle
   const toggleSelect = (id) => {
     if (selected.includes(id)) {
       setSelected(selected.filter((sid) => sid !== id));
@@ -84,7 +79,6 @@ const AddMultVehicle = () => {
     }
   };
 
-  // Handle master checkbox
   const toggleSelectAll = () => {
     if (selected.length === vehicles.length) {
       setSelected([]);
@@ -102,12 +96,8 @@ const AddMultVehicle = () => {
       JSON.stringify([...existing, ...selectedVehicles])
     );
     alert(`${selectedVehicles.length} vehicles added successfully!`);
-
-    // Reset
     setVehicles([]);
     setSelected([]);
-
-    // Redirect
     window.location.href = "/vehicle";
   };
 
@@ -115,7 +105,38 @@ const AddMultVehicle = () => {
     <div className="space-y-6">
       <h2 className="text-2xl font-bold mb-4">Add Multiple Vehicles</h2>
 
-      {/* Modern file upload UI */}
+      {/* Step Guide */}
+      <div className="bg-green-50 border border-green-200 rounded-lg p-6 space-y-4">
+        <h3 className="text-lg font-semibold text-green-800">
+          Follow These Steps
+        </h3>
+        <ol className="list-decimal list-inside space-y-2 text-green-700">
+          <li>
+            Download the{" "}
+            <a
+              href="/assets/vehicles-template.xlsx"
+              download
+              className="text-green-600 font-medium underline hover:text-green-800"
+            >
+              Vehicles Template
+            </a>{" "}
+            file.
+          </li>
+          <li>
+            Open the file and fill in your vehicle details in the given columns:
+            <strong>
+              {" "}
+              Zone, Vehicle Class, Registration Number, Chassis Number, Vehicle
+              Name
+            </strong>
+            .
+          </li>
+          <li>Save the file after entering all vehicle data.</li>
+          <li>Upload the completed file below to add your vehicles.</li>
+        </ol>
+      </div>
+
+      {/* File upload UI */}
       <div className="max-w-lg">
         <label className="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 hover:border-green-500 transition">
           <svg
