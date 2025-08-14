@@ -56,5 +56,142 @@
         ]
       }
     ]
+  },
+  "tollRate": {
+    "title": "Toll Rates by Authority & Bridge",
+    "subtitle": "Updated toll rates for different vehicle types, categorized by authority and bridge.",
+    "loadMore": "Load More",
+    "showLess": "Show Less",
+    "footerNote": "*Rates are subject to change based on government policy and special events.",
+    "tableHeaders": {
+      "vehicleClass": "Vehicle Class",
+      "rate": "Rate"
+    },
+    "authorities": {
+      "Hanif (Orion)": {
+        "Mayor Mohammad Hanif Flyover": [
+          { "vehicle": "Motorcycle", "rate": 50 },
+          { "vehicle": "Car/Jeep", "rate": 100 },
+          { "vehicle": "Pickup", "rate": 150 },
+          { "vehicle": "Bus", "rate": 200 },
+          { "vehicle": "Truck", "rate": 250 }
+        ]
+      },
+      "BBA": {
+        "Padma Bridge": [
+          { "vehicle": "Motorcycle", "rate": 100 },
+          { "vehicle": "Car/Jeep", "rate": 750 },
+          { "vehicle": "Pickup", "rate": 1200 },
+          { "vehicle": "Microbus", "rate": 1300 },
+          { "vehicle": "Minibus", "rate": 1400 },
+          { "vehicle": "Medium Bus", "rate": 2000 },
+          { "vehicle": "Big Bus", "rate": 2400 },
+          { "vehicle": "Truck (up to 5t)", "rate": 1600 },
+          { "vehicle": "Truck (5-8t)", "rate": 2100 },
+          { "vehicle": "Truck (3 axle)", "rate": 5500 },
+          { "vehicle": "Trailer (4 axle)", "rate": 6000 },
+          { "vehicle": "Trailer (>4 axle)", "rate": "6000+1500 per extra axle" }
+        ],
+        "Jamuna Bridge": [
+          { "vehicle": "Motorcycle", "rate": 50 },
+          { "vehicle": "Car/Jeep", "rate": 100 },
+          { "vehicle": "Bus", "rate": 200 },
+          { "vehicle": "Truck", "rate": 300 }
+        ],
+        "Karnaphuli Tunnel": [
+          { "vehicle": "Private Car/Pickup", "rate": 200 },
+          { "vehicle": "Microbus", "rate": 250 },
+          { "vehicle": "Bus (up to 31 seats)", "rate": 300 },
+          { "vehicle": "Bus (32+ seats)", "rate": 400 },
+          { "vehicle": "Three Axle Bus", "rate": 500 },
+          { "vehicle": "Truck", "rate": 1000 }
+        ]
+      },
+      "RHD": {
+        "Karnaphuli Bridge": [
+          { "vehicle": "Motorcycle", "rate": 20 },
+          { "vehicle": "Car/Jeep", "rate": 50 },
+          { "vehicle": "Bus", "rate": 100 },
+          { "vehicle": "Truck", "rate": 150 }
+        ],
+        "Meghna Bridge": [
+          { "vehicle": "Motorcycle", "rate": 20 },
+          { "vehicle": "Car/Jeep", "rate": 50 },
+          { "vehicle": "Bus", "rate": 100 },
+          { "vehicle": "Truck", "rate": 150 }
+        ],
+        "Gumti Bridge": [
+          { "vehicle": "Motorcycle", "rate": 20 },
+          { "vehicle": "Car/Jeep", "rate": 50 },
+          { "vehicle": "Bus", "rate": 100 },
+          { "vehicle": "Truck", "rate": 150 }
+        ],
+        "Bhairab Bridge": [
+          { "vehicle": "Motorcycle", "rate": 20 },
+          { "vehicle": "Car/Jeep", "rate": 50 },
+          { "vehicle": "Bus", "rate": 100 },
+          { "vehicle": "Truck", "rate": 150 }
+        ],
+        "Payra Bridge": [
+          { "vehicle": "Motorcycle", "rate": 20 },
+          { "vehicle": "Car/Jeep", "rate": 50 },
+          { "vehicle": "Bus", "rate": 100 },
+          { "vehicle": "Truck", "rate": 150 }
+        ],
+        "Khan Jahan Ali (Rupsha) Bridge": [
+          { "vehicle": "Motorcycle", "rate": 20 },
+          { "vehicle": "Car/Jeep", "rate": 50 },
+          { "vehicle": "Bus", "rate": 100 },
+          { "vehicle": "Truck", "rate": 150 }
+        ],
+        "Charsindur Bridge": [
+          { "vehicle": "Motorcycle", "rate": 20 },
+          { "vehicle": "Car/Jeep", "rate": 50 },
+          { "vehicle": "Bus", "rate": 100 },
+          { "vehicle": "Truck", "rate": 150 }
+        ],
+        "Shaheed Moijuddin Bridge": [
+          { "vehicle": "Motorcycle", "rate": 20 },
+          { "vehicle": "Car/Jeep", "rate": 50 },
+          { "vehicle": "Bus", "rate": 100 },
+          { "vehicle": "Truck", "rate": 150 }
+        ],
+        "Lalon Shah Bridge": [
+          { "vehicle": "Motorcycle", "rate": 20 },
+          { "vehicle": "Car/Jeep", "rate": 50 },
+          { "vehicle": "Bus", "rate": 100 },
+          { "vehicle": "Truck", "rate": 150 }
+        ]
+      }
+    }
+  },
+  "support": {
+    "title": "Contact Support",
+    "subtitle": "Our support team is always ready to assist you. Choose your preferred contact method below.",
+    "methods": [
+      {
+        "title": "Email Us",
+        "value": "support@ekpass.gov.bd",
+        "link": "mailto:support@ekpass.gov.bd",
+        "gradient": "from-blue-500 to-blue-400",
+        "icon": "faEnvelope"
+      },
+      {
+        "title": "Call Us",
+        "value": "333",
+        "link": "tel:333",
+        "gradient": "from-green-500 to-green-400",
+        "icon": "faPhone"
+      }
+    ]
+  },
+  "footer": {
+    "links": [
+      { "label": "Privacy Policy", "url": "/privacy-policy" },
+      { "label": "Terms & Conditions", "url": "/terms-and-conditions" }
+    ],
+    "technicalSupport": "Technical Support:",
+    "logoAlt": "logo",
+    "copyright": "© {{year}} EKPASS. All rights reserved."
   }
 }
