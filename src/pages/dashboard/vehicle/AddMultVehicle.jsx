@@ -1,18 +1,17 @@
-// AddMultVehicle.jsx
 import React, { useState } from "react";
 import * as XLSX from "xlsx";
 
 const AddMultVehicle = () => {
   const [vehicles, setVehicles] = useState([]);
   const [selected, setSelected] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
-  // Helper: Clean string (trim, lowercase)
-  const clean = (value) => {
-    if (value == null) return "";
-    return String(value).trim().toLowerCase();
-  };
+  // Helper function to normalize text
+  const clean = (value) =>
+    value == null ? "" : String(value).trim().toLowerCase();
 
-  // Demo BRTA registered vehicles
+  // Dummy BRTA registered list
   const brtaRegistered = [
     {
       zone: "Dhaka Metro",
@@ -28,7 +27,7 @@ const AddMultVehicle = () => {
     },
   ];
 
-  // Check if vehicle exists in BRTA
+  // Check if vehicle is registered in BRTA list
   const isRegistered = (vehicle) => {
     return brtaRegistered.some(
       (v) =>
@@ -39,7 +38,7 @@ const AddMultVehicle = () => {
     );
   };
 
-  // Handle file upload
+  // File upload and parsing
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -61,7 +60,13 @@ const AddMultVehicle = () => {
           chassisNumber: row.chassisNumber || "",
           vehicleName: row.vehicleName || "",
         };
-        return { ...vehicle, registered: isRegistered(vehicle) };
+        return {
+          ...vehicle,
+          registered: isRegistered(vehicle),
+          errorReason: isRegistered(vehicle)
+            ? ""
+            : "Vehicle Registration Number do not match BRTA records.",
+        };
       });
 
       setVehicles(formatted);
@@ -70,7 +75,22 @@ const AddMultVehicle = () => {
     reader.readAsBinaryString(file);
   };
 
-  // Checkbox toggle
+  // Download Excel template
+  const downloadTemplate = () => {
+    const ws = XLSX.utils.json_to_sheet([
+      {
+        zone: "Dhaka Metro",
+        vehicleClass: "Ka(ক)",
+        registrationNumber: "12-3456",
+        chassisNumber: "1234",
+        vehicleName: "Toyota Corolla",
+      },
+    ]);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Template");
+    XLSX.writeFile(wb, "vehicle_template.xlsx");
+  };
+
   const toggleSelect = (id) => {
     if (selected.includes(id)) {
       setSelected(selected.filter((sid) => sid !== id));
@@ -80,14 +100,14 @@ const AddMultVehicle = () => {
   };
 
   const toggleSelectAll = () => {
-    if (selected.length === vehicles.length) {
+    const verifiedOnly = vehicles.filter((v) => v.registered).map((v) => v.id);
+    if (selected.length === verifiedOnly.length) {
       setSelected([]);
     } else {
-      setSelected(vehicles.map((v) => v.id));
+      setSelected(verifiedOnly);
     }
   };
 
-  // Submit selected vehicles
   const handleSubmit = () => {
     const selectedVehicles = vehicles.filter((v) => selected.includes(v.id));
     const existing = JSON.parse(localStorage.getItem("vehicles")) || [];
@@ -105,7 +125,6 @@ const AddMultVehicle = () => {
     <div className="space-y-6">
       <h2 className="text-2xl font-bold mb-4">Add Multiple Vehicles</h2>
 
-      {/* Step Guide */}
       <div className="bg-green-50 border border-green-200 rounded-lg p-6 space-y-4">
         <h3 className="text-lg font-semibold text-green-800">
           Follow These Steps
@@ -136,22 +155,17 @@ const AddMultVehicle = () => {
         </ol>
       </div>
 
-      {/* File upload UI */}
+      {/* Download Template */}
+      {/* <button
+        onClick={downloadTemplate}
+        className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+      >
+        Download Excel Template
+      </button> */}
+
+      {/* File upload */}
       <div className="max-w-lg">
         <label className="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 hover:border-green-500 transition">
-          <svg
-            className="w-10 h-10 text-gray-400 mb-3"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M12 12V4m0 0l-3 3m3-3l3 3"
-            />
-          </svg>
           <p className="text-gray-600 font-medium">
             Click or drag & drop your Excel file
           </p>
@@ -167,14 +181,16 @@ const AddMultVehicle = () => {
 
       {vehicles.length > 0 && (
         <>
-          {/* Table */}
           <table className="w-full border border-gray-300 text-sm">
             <thead className="bg-gray-100">
               <tr>
                 <th className="p-2 border">
                   <input
                     type="checkbox"
-                    checked={selected.length === vehicles.length}
+                    checked={
+                      selected.length ===
+                      vehicles.filter((v) => v.registered).length
+                    }
                     onChange={toggleSelectAll}
                   />
                 </th>
@@ -188,13 +204,11 @@ const AddMultVehicle = () => {
             </thead>
             <tbody>
               {vehicles.map((v) => (
-                <tr
-                  key={v.id}
-                  className={v.registered ? "bg-green-100" : "bg-red-100"}
-                >
+                <tr key={v.id}>
                   <td className="p-2 border text-center">
                     <input
                       type="checkbox"
+                      disabled={!v.registered}
                       checked={selected.includes(v.id)}
                       onChange={() => toggleSelect(v.id)}
                     />
@@ -204,15 +218,28 @@ const AddMultVehicle = () => {
                   <td className="p-2 border">{v.registrationNumber}</td>
                   <td className="p-2 border">{v.chassisNumber}</td>
                   <td className="p-2 border">{v.vehicleName}</td>
-                  <td className="p-2 border font-semibold">
-                    {v.registered ? "Registered" : "Not Registered"}
+                  <td className="p-2 border text-center">
+                    {v.registered ? (
+                      <span className="px-2 py-1 bg-green-100 text-green-700 rounded">
+                        Verified
+                      </span>
+                    ) : (
+                      <button
+                        className="px-2 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200"
+                        onClick={() => {
+                          setErrorMessage(v.errorReason);
+                          setShowModal(true);
+                        }}
+                      >
+                        Not Verified
+                      </button>
+                    )}
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
 
-          {/* Submit button */}
           <button
             onClick={handleSubmit}
             className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 disabled:opacity-50"
@@ -221,6 +248,24 @@ const AddMultVehicle = () => {
             Submit Selected
           </button>
         </>
+      )}
+
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-white/30 backdrop-blur">
+          <div className="bg-white p-6 rounded shadow-lg max-w-sm">
+            <h3 className="text-lg font-bold mb-4 text-red-600">
+              Verification Failed
+            </h3>
+            <p className="text-gray-700 mb-4">{errorMessage}</p>
+            <button
+              className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+              onClick={() => setShowModal(false)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );
