@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 const EkpassIdLogin = ({ onClose }) => {
   const [ekpassId, setEkpassId] = useState("");
@@ -10,15 +11,25 @@ const EkpassIdLogin = ({ onClose }) => {
       alert("Please enter your EKPASS ID");
       return;
     }
-    // এখানে API call করে ekpassId verify করতে পারো
     localStorage.setItem("user", JSON.stringify({ ekpassId }));
     window.location.href = "/";
     setEkpassId("");
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-white/30 backdrop-blur z-50">
-      <div className="bg-white rounded-lg p-6 w-full max-w-md shadow-lg">
+    <motion.div
+      className="fixed inset-0 flex items-center justify-center bg-white/30 backdrop-blur z-50"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <motion.div
+        className="bg-white rounded-lg p-6 w-full max-w-md shadow-lg"
+        initial={{ opacity: 0, scale: 0.8, y: 50 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.8, y: 50 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+      >
         <div className="text-center mb-4">
           <img
             src="/assets/logo-1.png"
@@ -60,8 +71,8 @@ const EkpassIdLogin = ({ onClose }) => {
             </button>
           </div>
         </form>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
@@ -169,9 +180,11 @@ const Login = () => {
       </div>
 
       {/* Popup Modal for EKPASS ID Login */}
-      {showEkpassLogin && (
-        <EkpassIdLogin onClose={() => setShowEkpassLogin(false)} />
-      )}
+      <AnimatePresence>
+        {showEkpassLogin && (
+          <EkpassIdLogin onClose={() => setShowEkpassLogin(false)} />
+        )}
+      </AnimatePresence>
     </>
   );
 };
