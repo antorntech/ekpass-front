@@ -137,11 +137,13 @@ const Signup = () => {
       <div className="w-full h-full py-6 px-4 md:px-0 flex flex-col items-center gap-8">
         <div className="w-full max-w-2xl border border-gray-200 rounded-md p-4 sm:p-6 md:p-8 bg-white shadow-sm">
           <div className="flex flex-col items-center mb-2 md:mb-4 text-center">
-            <img
-              src="/assets/logo-1.png"
-              alt="logo.png"
-              className="w-28 md:w-36 lg:w-48 mx-auto"
-            />
+            <Link to="/">
+              <img
+                src="/assets/logo-1.png"
+                alt="logo.png"
+                className="w-28 md:w-36 lg:w-48 mx-auto"
+              />
+            </Link>
             <h2 className="text-lg sm:text-xl font-bold text-green-600">
               Create Your EkPass Account
             </h2>

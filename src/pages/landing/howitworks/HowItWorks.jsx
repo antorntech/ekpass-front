@@ -68,11 +68,11 @@ const HowItWorks = () => {
       </div>
 
       {/* Steps Grid */}
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-8 grid-cols-1 md:grid-cols-2">
         {steps.map((s) => (
           <div
             key={s.step}
-            className="bg-white shadow-lg rounded-xl p-6 border-t-4 hover:shadow-xl transition duration-300"
+            className="bg-white border border-gray-200 rounded-xl p-6 border-t-4 hover:shadow-lg transition duration-300"
             style={{ borderTopColor: s.color.replace("bg-", "") }}
           >
             {/* Icon */}

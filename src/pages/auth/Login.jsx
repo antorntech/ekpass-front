@@ -177,7 +177,9 @@ export default function Login() {
       <div className="w-full max-w-md bg-white p-6 md:p-8 rounded-lg shadow-sm border border-gray-200">
         {/* Email login */}
         <div className="text-center mb-2 md:mb-4">
-          <img src="/assets/logo-1.png" alt="logo" className="w-28 mx-auto" />
+          <Link to="/">
+            <img src="/assets/logo-1.png" alt="logo" className="w-28 mx-auto" />
+          </Link>
           <h2 className="text-xl font-bold text-green-600 mt-3">
             Login to EkPass
           </h2>

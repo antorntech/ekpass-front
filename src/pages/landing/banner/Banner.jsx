@@ -29,11 +29,11 @@ const Banner = () => {
         </div>
 
         {/* Right Image */}
-        <div className="flex-1">
+        <div className="flex-1 w-full">
           <img
             src="/assets/banner-bg.png"
             alt="Toll System"
-            className="rounded-lg w-full"
+            className="w-full object-cover"
           />
         </div>
       </div>
